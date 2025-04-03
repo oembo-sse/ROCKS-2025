@@ -17,6 +17,10 @@ import { s09 } from "./slides/s09";
 import { s10 } from "./slides/s10";
 import { s80 } from "./slides/s80";
 import { s85 } from "./slides/s85";
+import { sA } from "./slides/sA";
+import { sC } from "./slides/sC";
+import { sRels } from "./slides/sRels";
+import { sLean } from "./slides/sLean";
 
 const SLIDES = buildSlides([
   sIntro,
@@ -33,37 +37,41 @@ while x > 0 {
   s00(
     `x := 1 ; stop := 0 ;
 while stop = 0 {
-{ stop := 1 } [1/2] { x := x * 2 }
+{ stop := 1 } [1/2] { x := x + 1 }
 }`,
     ["x", "stop"]
   ),
-  s01,
-  s02,
-  s03,
-  s05,
-  // s00(`x := 5 ; y := x + 2`, ["x", "y"]),
-  s055,
-  s06,
-  s00(`tick := 0 ;
-fail := 0 ; sent := 0 ;
-while sent < 4 && fail < 2 {
-  tick := tick + 1 ;
-  { fail := 0 ; sent := sent + 1 } [1/2]
-  { fail := fail + 1 }
-}`),
-  s07,
-  s08,
-  s09,
+  sC,
+  sA,
+  sRels,
   s10,
-  s85,
-  s80,
-  s00(`tick := 0 ;
-fail := 0 ; sent := 0 ;
-while sent < 4 && fail < 2 {
-  tick := tick + 1 ;
-  { fail := 0 ; sent := sent + 1 } [1/2]
-  { fail := fail + 1 }
-}`),
+  sLean,
+  //   s01,
+  //   s02,
+  //   s03,
+  //   s05,
+  //   // s00(`x := 5 ; y := x + 2`, ["x", "y"]),
+  //   s055,
+  //   s06,
+  //   s00(`tick := 0 ;
+  // fail := 0 ; sent := 0 ;
+  // while sent < 4 && fail < 2 {
+  //   tick := tick + 1 ;
+  //   { fail := 0 ; sent := sent + 1 } [1/2]
+  //   { fail := fail + 1 }
+  // }`),
+  //   s07,
+  //   s08,
+  //   s09,
+  //   s85,
+  //   s80,
+  //   s00(`tick := 0 ;
+  // fail := 0 ; sent := 0 ;
+  // while sent < 4 && fail < 2 {
+  //   tick := tick + 1 ;
+  //   { fail := 0 ; sent := sent + 1 } [1/2]
+  //   { fail := fail + 1 }
+  // }`),
   s90,
 ]);
 

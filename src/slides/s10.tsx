@@ -6,6 +6,7 @@ import { Callout, H } from "../common";
 import React from "react";
 import { weakestPre } from "../semantics";
 import { LeanLogo } from "../assets/lean_logo";
+import jpmdpfppp from "../assets/jpmdpfppp.png";
 
 const steps = [
   (delta: number) =>
@@ -13,15 +14,21 @@ const steps = [
       <motion.div
         layout="position"
         layoutId="math-theorem"
-        className="text-5xl flex gap-10"
-      >{tex`\\MinER(\\orew_X, \\state{C}{\\sigma}) = \\dwp{C}{X}(\\sigma)`}</motion.div>
+        className="text-5xl flex flex-col"
+      >
+        {/* {tex`\\MinER(\\orew_X, \\state{C}{\\sigma}) = \\dwp{C}{X}(\\sigma)`} */}
+        {tex`\iInf_{\McS \mem \MfS} \iSup_{n \mem \N} \EC{n}{\McS}(\state{C}{\sigma}) = \wp{C}{X}(\sigma)`}
+        <div className="text-4xl ml-10">
+          with {tex`\cost{}(\state{\sink}{\sigma}) = X(\sigma)`}
+        </div>
+      </motion.div>
     ),
   (delta: number) =>
     delta == 0 && {
       render: (
         <div className="flex flex-col items-center text-5xl gap-4">
           <motion.div layout="position" layoutId="statement">
-            The <H>minimum expected reward</H> on the <H>MDP</H>,
+            The <H>minimum expected cost</H> on the <H>MDP</H>,
           </motion.div>
         </div>
       ),
@@ -32,7 +39,7 @@ const steps = [
       render: (
         <div className="flex flex-col items-center text-5xl gap-4">
           <motion.div layout="position" layoutId="statement">
-            The <H>minimum expected reward</H> on the <H>MDP</H>, <br />
+            The <H>minimum expected cost</H> on the <H>MDP</H>, <br />
           </motion.div>
           <motion.div layout="position" layoutId="statement-2">
             derived from the <H>operational semantics</H>,
@@ -46,13 +53,13 @@ const steps = [
       render: (
         <div className="flex flex-col items-center text-5xl gap-4">
           <motion.div layout="position" layoutId="statement">
-            The <H>minimum expected reward</H> on the <H>MDP</H>, <br />
+            The <H>minimum expected cost</H> on the <H>MDP</H>, <br />
           </motion.div>
           <motion.div layout="position" layoutId="statement-2">
             derived from the <H>operational semantics</H>, <br />
           </motion.div>
           <motion.div layout="position" layoutId="statement-3">
-            is equal to the <H>weakest pre-expectations</H>.
+            is equal to the <H>weakest pre-expectation</H>.
           </motion.div>
         </div>
       ),
@@ -66,19 +73,26 @@ const steps = [
             <motion.div
               layout="position"
               layoutId="math-theorem"
-              className="text-5xl flex mb-10"
-            >{tex`\\MinER(\\orew_X, \\state{C}{\\sigma}) = \\dwp{C}{X}(\\sigma)`}</motion.div>
+              className="text-5xl flex mb-10 flex-col"
+            >
+              {/* {tex`\\MinER(\\orew_X, \\state{C}{\\sigma}) = \\dwp{C}{X}(\\sigma)`} */}
+              {tex`\iInf_{\McS \mem \MfS} \iSup_{n \mem \N} \EC{n}{\McS}(\state{C}{\sigma}) = \wp{C}{X}(\sigma)`}
+              <div className="text-4xl ml-10">
+                with {tex`\cost{}(\state{\sink}{\sigma}) = X(\sigma)`}
+              </div>
+              {/* ⨅ 𝒮, ⨆ n, (𝒬 (ϖ:=ϖ)).EC (𝒬.cost X) 𝒮 n (·⟨C,σ⟩) = C.wp X σ */}
+            </motion.div>
             <motion.div layout="position" layoutId="statement">
-              The <H>minimum expected reward</H> on the <H>MDP</H>, <br />
+              The <H>minimum expected cost</H> on the <H>MDP</H>, <br />
             </motion.div>
             <motion.div layout="position" layoutId="statement-2">
               derived from the <H>operational semantics</H>, <br />
             </motion.div>
             <motion.div layout="position" layoutId="statement-3">
-              is equal to the <H>weakest pre-expectations</H>.
+              is equal to the <H>weakest pre-expectation</H>.
             </motion.div>
           </div>
-          {delta == 1 && (
+          {/* {delta == 1 && (
             <motion.div
               layout
               initial={{
@@ -89,11 +103,11 @@ const steps = [
                 rotate: -50,
               }}
               animate={{ scale: 1, position: "absolute", rotate: 20 }}
-              className="bg-bg-50/50 rounded-xl border"
+              className="bg-fg-50/50 rounded-xl border"
             >
-              <LeanLogo className="w-96 blur-[5px] animate-pulse" />
+              <LeanLogo className="w-96" />
             </motion.div>
-          )}
+          )} */}
         </Callout>
       </motion.div>
     ),
@@ -101,7 +115,7 @@ const steps = [
   null,
 ];
 
-export const s10 = makeSlide(steps.length + 1, () => {
+export const s10 = makeSlide(steps.length, () => {
   const { step } = useSlide();
   return (
     <div className="flex justify-center flex-col items-center gap-10">

@@ -8,6 +8,8 @@ export default {
       colors: {
         fg: colors.emerald,
         bg: colors.stone,
+        McS: colors.orange,
+        McL: colors.purple,
       },
       fontFamily: {
         katex: ["KaTeX_Main", "Times New Roman", "serif"],

@@ -5,6 +5,7 @@ import { useSlidesBase } from "./hooks";
 export type AppearProps = {
   from?: number;
   to?: number;
+  show?: boolean;
   scale?: boolean;
   exit?: boolean;
   className?: string;
@@ -28,6 +29,11 @@ const deriveProps = (props: AppearProps) => {
 const show = (props: AppearProps) => {
   const { step } = useSlide();
   const { from = 0, to = Infinity } = props;
+
+  if ("show" in props) {
+    return props.show;
+  }
+
   return step >= from && step < to;
 };
 
